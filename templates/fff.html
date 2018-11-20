@@ -12,14 +12,20 @@
             Содержание: <input type="text" name="content"><br>
             <input type="submit" value="add">
         </form>
+
+
     <h2>List:</h2>
-    {%for book in books%}
-        <table>
-            <tr>
-        <td>Имя: {{book.name}}
-         Автор: {{book.author}}
-         Содержание: {{book.content}}
-        </td>
+    <table border="1">
+        <tr>
+                <th>ID:</th>
+                <th>Имя:</th>
+                <th>Автор:</th>
+                <th>Содержание:</th>
+
+            </tr>
+    {%for book in books %}
+         <tr><td>{{book.id}}</td><td>{{book.name}}</td><td>{{book.author}}</td><td>{{book.content}}</td></tr>
     {% endfor %}
+     </table>
 </body>
 </html>
