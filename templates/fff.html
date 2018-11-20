@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book page</title>
+</head>
+<body>
+    <h1>Book list</h1>
+        <form action="/add_book" method="POST">
+            Название: <input type="text" name="name"><br>
+            Автор:<input type="text" name="author"><br>
+            Содержание: <input type="text" name="content"><br>
+            <input type="submit" value="add">
+        </form>
+    <h2>List:</h2>
+    {%for book in books%}
+        <table>
+            <tr>
+        <td>Имя: {{book.name}}
+         Автор: {{book.author}}
+         Содержание: {{book.content}}
+        </td>
+    {% endfor %}
+</body>
+</html>
