@@ -8,8 +8,8 @@
     <h1>Book list</h1>
         <form action="/add_book" method="POST">
             Название: <input type="text" name="name"><br>
-            Автор:<input type="text" name="author"><br>
-            Содержание: <input type="text" name="content"><br>
+            Автор: <input type="text" name="author"><br>
+          Содержание: <input type="text" name="content"><br>
             <input type="submit" value="add">
         </form>
 
@@ -23,9 +23,26 @@
                 <th>Содержание:</th>
 
             </tr>
-    {%for book in books %}
-         <tr><td>{{book.id}}</td><td>{{book.name}}</td><td>{{book.author}}</td><td>{{book.content}}</td></tr>
-    {% endfor %}
+      {%for book in books %}
+         <tr><td>{{book.id}}</td>
+             <td>{{book.name}}</td>
+             <td>{{book.author}}</td>
+             <td>{{book.content}}</td>
+        <td>
+             <form method="POST" action="/update" style="display: inline">
+                <input type="hidden" value="{{ book.name }}" name="oldname">
+                <input size="10" type="text" value="{{ book.name }}" name="newname">
+                <input type="submit" value="update">
+             </form>
+        </td>
+             <td>
+             <form method="post" action="/delete" style="display: inline">
+                 <input type="hidden" value="{{ book.name }}" name="name">
+                 <input size="10" type="submit" value="Delete">
+             </form>
+             </td>
+
+     {% endfor %}
      </table>
 </body>
 </html>

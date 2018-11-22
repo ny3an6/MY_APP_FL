@@ -26,7 +26,7 @@ class Book(db.Model):
 
 @app.route('/', methods=['GET'])
 def book():
-    return render_template('fff.html')
+    return render_template('fff.html', books=Book.query.all())
 
 
 @app.route('/add_book', methods=['GET', 'POST'])
@@ -37,8 +37,27 @@ def add_book():
         content = request.form.get('content')
         db.session.add(Book(name, author, content))
         db.session.commit()
-    books = Book.query.all()
-    return render_template('fff.html', books=books)
+    return redirect(url_for('book'))
+
+
+@app.route('/update', methods=['POST'])
+def update():
+    if request.form:
+        newname = request.form.get('newname')
+        oldname = request.form.get('oldname')
+        book = Book.query.filter_by(name=oldname).first()
+        book.name = newname
+        db.session.commit()
+    return redirect(url_for('book'))
+
+
+@app.route('/delete', methods=['POST'])
+def delete():
+    name = request.form.get('name')
+    book = Book.query.filter_by(name=name).first()
+    db.session.delete(book)
+    db.session.commit()
+    return redirect(url_for('book'))
 
 
 if __name__ == '__main__':
