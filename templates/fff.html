@@ -17,10 +17,10 @@
     <h2>List:</h2>
     <table border="1">
         <tr>
-                <th>ID:</th>
-                <th>Имя:</th>
-                <th>Автор:</th>
-                <th>Содержание:</th>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Автор</th>
+                <th>Содержание</th>
 
             </tr>
       {%for book in books %}
@@ -30,14 +30,16 @@
              <td>{{book.content}}</td>
         <td>
              <form method="POST" action="/update" style="display: inline">
-                <input type="hidden" value="{{ book.name }}" name="oldname">
-                <input size="10" type="text" value="{{ book.name }}" name="newname">
+                <input type="hidden" value="{{ book.id }}" name="id">
+                 <input size="10" type="text" value="{{ book.name }}" name="new_name">
+                 <input size="10" type="text" value="{{ book.author }}" name="new_author">
+                <input size="10" type="text" value="{{ book.content }}" name="new_content">
                 <input type="submit" value="update">
              </form>
         </td>
              <td>
              <form method="post" action="/delete" style="display: inline">
-                 <input type="hidden" value="{{ book.name }}" name="name">
+                 <input type="hidden" value="{{ book.id }}" name="id">
                  <input size="10" type="submit" value="Delete">
              </form>
              </td>

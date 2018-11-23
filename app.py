@@ -43,18 +43,22 @@ def add_book():
 @app.route('/update', methods=['POST'])
 def update():
     if request.form:
-        newname = request.form.get('newname')
-        oldname = request.form.get('oldname')
-        book = Book.query.filter_by(name=oldname).first()
-        book.name = newname
+        new_author = request.form.get('new_author')
+        new_content = request.form.get('new_content')
+        new_name = request.form.get('new_name')
+        id = request.form.get('id')
+        book = Book.query.filter_by(id=id).first()
+        book.name = new_name
+        book.author = new_author
+        book.content = new_content
         db.session.commit()
     return redirect(url_for('book'))
 
 
 @app.route('/delete', methods=['POST'])
 def delete():
-    name = request.form.get('name')
-    book = Book.query.filter_by(name=name).first()
+    id = request.form.get('id')
+    book = Book.query.filter_by(id=id).first()
     db.session.delete(book)
     db.session.commit()
     return redirect(url_for('book'))
