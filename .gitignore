@@ -1,5 +1,9 @@
-# вирт среда
+
 venv/
 
-# asd
+
 .idea/
+
+.vscode/
+
+.pytestest_cache/

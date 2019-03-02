@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style type="text/css">
+		 
+	</style>
+    <script src="/static/js/script.js"></script>
     <meta charset="UTF-8">
     <title>Book page</title>
 </head>
 <body>
     <h1>Book list</h1>
-        <form action="/add_book" method="POST">
-            Название: <input type="text" name="name"><br>
-            Автор: <input type="text" name="author"><br>
-          Содержание: <input type="text" name="content"><br>
+        <form id="form" action="/add_book" method="POST">
+            <input id="name_1" type="text" autofocus placeholder="Название" ><br>
+            <input id="author_1" type="text"  placeholder="Автор" ><br>
+            <input id="content_1" type="text"  placeholder="Содержание"><br>
             <input type="submit" value="add">
         </form>
 
 
     <h2>List:</h2>
-    <table border="1">
+    <table border="1" id="dynamic" width="750" cellspacing="0" cellpadding="1">
         <tr>
                 <th>ID</th>
                 <th>Название</th>
@@ -23,28 +27,29 @@
                 <th>Содержание</th>
 
             </tr>
-      {%for book in books %}
-         <tr><td>{{book.id}}</td>
-             <td>{{book.name}}</td>
-             <td>{{book.author}}</td>
-             <td>{{book.content}}</td>
+      {%for book in books %} <!-- м.б. заменить books на data из ajax --> 
+         <tr><td id="responce_4">{{book.id}}</td>
+             <td id="responce_1">{{book.name}}</td>
+             <td id="responce_2">{{book.author}}</td>
+             <td id="responce_3">{{book.content}}</td>
+        
         <td>
              <form method="POST" action="/update" style="display: inline">
                 <input type="hidden" value="{{ book.id }}" name="id">
-                 <input size="10" type="text" value="{{ book.name }}" name="new_name">
-                 <input size="10" type="text" value="{{ book.author }}" name="new_author">
-                <input size="10" type="text" value="{{ book.content }}" name="new_content">
-                <input type="submit" value="update">
+                <input id="input" size="10" type="text" value="{{ book.name }}"  name="new_name">
+                <input id="input" size="10" type="text" value="{{ book.author }}" name="new_author">
+                <input id="input" size="10" type="text" value="{{ book.content }}" name="new_content">
+                <input class="button-update" type="submit" value="update">
              </form>
         </td>
              <td>
-             <form method="post" action="/delete" style="display: inline">
+             <form method="post" action="/delete" style="display:inline">
                  <input type="hidden" value="{{ book.id }}" name="id">
                  <input size="10" type="submit" value="Delete">
              </form>
              </td>
 
-       {% endfor %}
+      {% endfor %}
 
      </table>
 </body>
