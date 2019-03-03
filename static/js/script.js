@@ -13,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         xhr.onload = () => { // когда мы загрузим данные которые получили с сервера выполним следующее
             const data = JSON.parse(xhr.responseText); // JSON.parse превращает текст в java script обьект(словарь)
+            let table = document.getElementById("dynamic");
+            let row = table.insertRow(table.rows.length);
+
+            let cell1 = row.insertCell(0);
+            cell1.innerHTML = data.id;
+            console.log(table)
+            console.log(table.rows.length)
             console.log(data)
            // data = 
            //const id = data.id;
