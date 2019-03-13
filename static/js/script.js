@@ -17,21 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
             let row = table.insertRow(table.rows.length);
 
             let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
             cell1.innerHTML = data.id;
-            console.log(table)
-            console.log(table.rows.length)
-            console.log(data)
-           // data = 
-           //const id = data.id;
-           //const name = data.name;
-           //const author = data.author;
-           //const content = data.content;
-           //document.querySelector('#responce_1').innerHTML = name;
-           //document.querySelector('#responce_2').innerHTML = author;
-           //document.querySelector('#responce_3').innerHTML = content;
-           //document.querySelector('#responce_4').innerHTML = id;
-            console.log(xhr.response);
-            console.log(xhr.responseText);
+            cell2.innerHTML = data.name;
+            cell3.innerHTML = data.author;
+            cell4.innerHTML = data.content;
+            
+           
+            
             
             };
         
@@ -42,16 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(data);
             
             xhr.send(data);
-            alert(document.cookie)
+            
             return false;
         };
 
-        //document.querySelector('#form').onsubmit = () => {
-        //    const xhr = new XMLHttpRequest();
-        //    xhr.open('GET', '/');
-        //    xhr.send();
-//
-     //  };
+        
    });
 
 
